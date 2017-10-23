@@ -1,2 +1,5 @@
-kyamadahoge
-k-okajima
+# Member List
+* kyamadahoge
+* k-okajima
+* nhashi
+
