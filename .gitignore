@@ -96,3 +96,5 @@ buildNumber.properties
 ## other
 Thumbs.db
 .DS_Store
+.classpath
+.project
