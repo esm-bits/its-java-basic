@@ -1,6 +1,8 @@
 # Member List
+* tToyoshima
 * kyamadahoge
 * k-okajima
 * nhashi
 * esm-watanabe
+* yashi884
 * esm-tkato
