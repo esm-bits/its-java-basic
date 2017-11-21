@@ -11,16 +11,20 @@
   ```
 
 ## Member List
-* tToyoshima
-* a-tsutsumi
-* kyamadahoge
-* k-okajima
-* nhashi
-* esm-watanabe
-* y-kawase
-* esm-miyagawa
-* yashi884
-* mahaker
-* eishida
-* SakikoFukuda
-* esm-tkato
+* group１
+  * SakikoFukuda
+  * tsuji-k
+  * tToyoshima
+  * a-tsutsumi
+  * kyamadahoge
+* group2
+  * nhashi
+  * yashi884
+  * esm-watanabe
+  * k-okajima
+* group3
+  * mahaker
+  * eishida
+  * esm-miyagawa
+  * esm-tkato
+  * y-kawase
