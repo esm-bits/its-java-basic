@@ -4,6 +4,7 @@ public class DiamondPrinter {
 
     public static void main(String... args) {
 
+        print(3);
         // コンソールにひし形(◆)を出力する.
         // 大きさは任意に変えられるようにする.
 
@@ -18,5 +19,20 @@ public class DiamondPrinter {
         // *****
         //  ***
         //   *
+    }
+
+    private static void print(int size) {
+        String str = "";
+        for (int i = 1; i <= size * 2 - 1; i++) {
+            for (int j = 1; j <= size * 2 - 1; j++) {
+                if (Math.abs(size - i) + Math.abs(size - j) < size) {
+                    str += "*";
+                } else {
+                    str += " ";
+                }
+            }
+            str += System.getProperty("line.separator");
+        }
+        System.out.println(str);
     }
 }
