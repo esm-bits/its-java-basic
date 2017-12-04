@@ -31,7 +31,7 @@ public class DiamondPrinter {
             }
         }
         
-        return row.append("\n").toString(); // 末尾に改行をつけて返却
+        return row.append(System.getProperty("line.separator")).toString(); // 末尾に改行をつけて返却
     }
 
     public static void main(String... args) {
