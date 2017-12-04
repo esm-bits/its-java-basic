@@ -1,5 +1,8 @@
 package esmbits.itsjavabasic.practices.brainteaser;
 
+import java.util.Optional;
+import java.util.stream.IntStream;
+
 public class DiamondPrinter {
 
     public static void main(String... args) {
@@ -27,17 +30,15 @@ public class DiamondPrinter {
     }
 
     private static void print(int size) {
-        String str = "";
-        for (int i = 1; i <= size * 2 - 1; i++) {
-            for (int j = 1; j <= size * 2 - 1; j++) {
-                if (Math.abs(size - i) + Math.abs(size - j) < size) {
-                    str += "*";
-                } else {
-                    str += " ";
-                }
-            }
-            str += System.getProperty("line.separator");
-        }
-        System.out.println(str);
+
+        IntStream.rangeClosed(1, 2 * size - 1)
+            .mapToObj(i ->
+                IntStream.rangeClosed(1, 2 * size - 1)
+                    .mapToObj(j ->
+                        Math.abs(size - i) + Math.abs(size - j) < size ? "*" : " ")
+                    .reduce((j,k) -> j.concat(k)))
+            .reduce((i,j) -> i.flatMap(i2 -> j.map(j2 -> i2.concat(System.getProperty("line.separator")).concat(j2))))
+            .flatMap(i -> i)
+            .ifPresent(i -> System.out.println(i));
     }
 }
