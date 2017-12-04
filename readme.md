@@ -22,6 +22,7 @@
   * yashi884
   * esm-watanabe
   * k-okajima
+  * NakamuraArata
 * group3
   * mahaker
   * eishida
