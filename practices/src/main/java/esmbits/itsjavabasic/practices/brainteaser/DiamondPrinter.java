@@ -17,10 +17,7 @@ public class DiamondPrinter {
         StringBuilder row = new StringBuilder("");
         
         // 中心からどれだけ離れているかを計算
-        int range = size - current;
-        if(range < 0) {
-            range = current - size;
-        }
+        int range = Math.abs(size - current);
 
         for(int i = 0; i < maxWidth; i++) {
             if(i < range) {
