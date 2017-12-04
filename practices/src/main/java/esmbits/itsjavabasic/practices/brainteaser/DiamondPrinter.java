@@ -23,7 +23,7 @@ public class DiamondPrinter {
         //   *
         if(args != null && args.length > 0) {
             try {
-            print(Integer.valueOf(args[0]));
+                print(Integer.valueOf(args[0]));
             }catch(Exception e){
             }
         }
