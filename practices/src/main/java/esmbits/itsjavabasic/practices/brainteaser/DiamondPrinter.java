@@ -1,6 +1,5 @@
 package esmbits.itsjavabasic.practices.brainteaser;
 
-import java.util.Optional;
 import java.util.stream.IntStream;
 
 public class DiamondPrinter {
@@ -39,6 +38,6 @@ public class DiamondPrinter {
                     .reduce((j,k) -> j.concat(k)))
             .reduce((i,j) -> i.flatMap(i2 -> j.map(j2 -> i2.concat(System.getProperty("line.separator")).concat(j2))))
             .flatMap(i -> i)
-            .ifPresent(i -> System.out.println(i));
+            .ifPresent(i -> System.out.print(i));
     }
 }
