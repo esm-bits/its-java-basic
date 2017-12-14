@@ -52,7 +52,7 @@ public class DiamondPrinter {
     }
 
     public static void main(String... args) {
-        int height = 3;
+        int height = Integer.parseInt(args[0]);
         System.out.print(new DiamondPrinter().createDiamond(height));
     }
 }
