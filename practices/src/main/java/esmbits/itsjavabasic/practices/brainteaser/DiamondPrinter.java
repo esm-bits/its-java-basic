@@ -33,6 +33,7 @@ public class DiamondPrinter {
         		}
         	}
 
+
     		System.out.println(linePrint);
     		linePrint = new String();
     	}
