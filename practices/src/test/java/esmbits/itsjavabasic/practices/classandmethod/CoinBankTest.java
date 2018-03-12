@@ -41,6 +41,8 @@ public class CoinBankTest {
 
         CoinBank coinBank = new CoinBank();
 
+        assertThat(coinBank.pickCoins(Coin.One, 100),is(0));
+        
         coinBank.putCoins(Coin.One, 1);
         coinBank.putCoins(Coin.Five, 5);
         coinBank.putCoins(Coin.Ten, 10);
