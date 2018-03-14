@@ -44,6 +44,7 @@ public class CoinBankTest {
         CoinBank bank = new CoinBank();
         assertThat(bank.putCoins(YEN1, 10), is(10));
         assertThat(bank.putCoins(YEN5, 0), is(0));  // 入れるフリ
+        assertThat(bank.putCoins(YEN5, -5), is(0));  // 入れるフリその2
 
         // 1円だけ10枚ある
         assertThat(bank.countCoins(), is(10));
@@ -60,6 +61,7 @@ public class CoinBankTest {
         // 1円だけ取り出せる
         assertThat(bank.pickCoins(YEN1, 1), is(1));
         assertThat(bank.pickCoins(YEN1, 0), is(0)); // 取り出すフリ
+        assertThat(bank.pickCoins(YEN1, -10), is(0)); // 取り出すフリその2
         assertThat(bank.pickCoins(YEN5, 1), is(0));
         assertThat(bank.pickCoins(YEN10, 1), is(0));
         assertThat(bank.pickCoins(YEN50, 1), is(0));
@@ -153,6 +155,7 @@ public class CoinBankTest {
     public void test_中身が一致するか確認する() {
 
         // 空っぽどうし
+        // 0,0,0,0,0,0 : 0,0,0,0,0,0
         CoinBank bank0 = new CoinBank();
         CoinBank bank1 = new CoinBank();
         assertThat(bank0.isExactMatch(bank1), is(true));
@@ -165,22 +168,44 @@ public class CoinBankTest {
         bank1.putCoins(YEN1, 1);
         assertThat(bank0.isExactMatch(bank1), is(true));
 
-        // 4,3,3,3,3,3 : 1,0,0,0,0,0
-        bank0.putCoins(YEN1, 3);
-        bank0.putCoins(YEN5, 3);
-        bank0.putCoins(YEN10, 3);
-        bank0.putCoins(YEN50, 3);
-        bank0.putCoins(YEN100, 3);
-        bank0.putCoins(YEN500, 3);
+        // 1,1,0,0,0,0 : 1,0,0,0,0,0
+        bank0.putCoins(YEN5, 1);
         assertThat(bank0.isExactMatch(bank1), is(false));
 
-        // 4,3,3,3,3,3 : 4,3,3,3,3,3
-        bank1.putCoins(YEN1, 3);
-        bank1.putCoins(YEN5, 3);
-        bank1.putCoins(YEN10, 3);
-        bank1.putCoins(YEN50, 3);
-        bank1.putCoins(YEN100, 3);
-        bank1.putCoins(YEN500, 3);
+        // 1,1,0,0,0,0 : 1,1,0,0,0,0
+        bank1.putCoins(YEN5, 1);
+        assertThat(bank0.isExactMatch(bank1), is(true));
+
+        // 1,1,1,0,0,0 : 1,1,0,0,0,0
+        bank0.putCoins(YEN10, 1);
+        assertThat(bank0.isExactMatch(bank1), is(false));
+
+        // 1,1,1,0,0,0 : 1,1,1,0,0,0
+        bank1.putCoins(YEN10, 1);
+        assertThat(bank0.isExactMatch(bank1), is(true));
+
+        // 1,1,1,1,0,0 : 1,1,1,0,0,0
+        bank0.putCoins(YEN50, 1);
+        assertThat(bank0.isExactMatch(bank1), is(false));
+
+        // 1,1,1,1,0,0 : 1,1,1,1,0,0
+        bank1.putCoins(YEN50, 1);
+        assertThat(bank0.isExactMatch(bank1), is(true));
+
+        // 1,1,1,1,1,0 : 1,1,1,1,0,0
+        bank0.putCoins(YEN100, 1);
+        assertThat(bank0.isExactMatch(bank1), is(false));
+
+        // 1,1,1,1,1,0 : 1,1,1,1,1,0
+        bank1.putCoins(YEN100, 1);
+        assertThat(bank0.isExactMatch(bank1), is(true));
+
+        // 1,1,1,1,1,1 : 1,1,1,1,1,0
+        bank0.putCoins(YEN500, 1);
+        assertThat(bank0.isExactMatch(bank1), is(false));
+
+        // 1,1,1,1,1,1 : 1,1,1,1,1,1
+        bank1.putCoins(YEN500, 1);
         assertThat(bank0.isExactMatch(bank1), is(true));
     }
 }
