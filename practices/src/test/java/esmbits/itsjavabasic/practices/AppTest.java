@@ -7,7 +7,7 @@ import junit.framework.TestSuite;
 /**
  * Unit test for simple App.
  */
-public class AppTest 
+public class AppTest
     extends TestCase
 {
     /**
@@ -16,6 +16,7 @@ public class AppTest
      * @param testName name of the test case
      */
     public AppTest( String testName )
+
     {
         super( testName );
     }
@@ -35,4 +36,6 @@ public class AppTest
     {
         assertTrue( true );
     }
+
+
 }
