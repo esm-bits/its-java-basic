@@ -11,6 +11,9 @@ public class Training {
     // 和が value となるような連続する 2 つ以上の正の整数の組み合わせを出力する.
     // (例) value が 9 の場合は 2+3+4 と 4+5 の二通りがある.
 
+    // 連続数の最小の数
+    private static final int MINIMUM_NUMBERS_COUNT = 2;
+
     /**
      * 対象の分解数で分解可能な最小値を返す.
      *
@@ -20,14 +23,16 @@ public class Training {
     public static int getMinimumDecomposableNumber(int decomposeNum) {
 
         // 分解不可の場合は例外
-        if (decomposeNum < 2) throw new IllegalArgumentException("分解数は2以上でなければいけません。");
+        if (decomposeNum < MINIMUM_NUMBERS_COUNT)
+            throw new IllegalArgumentException(
+                    String.format("分解数は%d以上でなければいけません。", MINIMUM_NUMBERS_COUNT));
 
         // 1から分解数までの和が最小値
         return IntStream.rangeClosed(1, decomposeNum).sum();
     }
 
     /**
-     * 連続する2つ以上の正の整数に分解可能かどうかを返す.
+     * 連続する{@code MINIMUM_NUMBERS_COUNT}個以上の正の整数に分解可能かどうかを返す.
      *
      * @param value 検証する数
      * @param decomposeNum 分解数
@@ -35,16 +40,19 @@ public class Training {
      */
     public static boolean isDecomposable(int value, int decomposeNum) {
 
-        // 分解数が正しい → 分解数が2以上
-        if (decomposeNum < 2) { return false; }
+        try {
+            // 分解可能最小値
+            int minimumDecomposableNumber = getMinimumDecomposableNumber(decomposeNum);
 
-        // 分解可能最小値
-        int minimumDecomposableNumber = getMinimumDecomposableNumber(decomposeNum);
+            // 対象数が分解数で分解可能
+            // → 分解可能最小値以上 かつ 対象数と分解数の剰余が分解可能最小値と分解数との剰余と一致
+            return value >= minimumDecomposableNumber
+                    && value % decomposeNum == minimumDecomposableNumber % decomposeNum;
 
-        // 対象数が分解数で分解可能
-        // → 分解可能最小値以上 かつ 対象数と分解数の剰余が分解可能最小値と分解数との剰余と一致
-        return value >= minimumDecomposableNumber
-                && value % decomposeNum == minimumDecomposableNumber % decomposeNum;
+        } catch (IllegalArgumentException e) {
+
+            return false;
+        }
     }
 
     /**
@@ -76,7 +84,7 @@ public class Training {
     }
 
     /**
-     * 連続する2つ以上の正の整数で分解した数のセットを返す.
+     * 連続する{@code MINIMUM_NUMBERS_COUNT}個以上の正の整数で分解した数のセットを返す.
      *
      * @param value 分解する数
      * @return 分解された数のセット
@@ -84,13 +92,13 @@ public class Training {
     public static Set<List<Integer>> getContinuousNaturalNumbersSumOf(int value) {
 
         // 最大分解数を導出
-        int checkNum = 2;
-        for (int i = 2; getMinimumDecomposableNumber(i) <= value; i++) {
+        int checkNum = MINIMUM_NUMBERS_COUNT;
+        for (int i = MINIMUM_NUMBERS_COUNT; getMinimumDecomposableNumber(i) <= value; i++) {
             checkNum = i;
         }
 
         // 各分解数で分解可能なものを計算
-        return IntStream.rangeClosed(2, checkNum)
+        return IntStream.rangeClosed(MINIMUM_NUMBERS_COUNT, checkNum)
                 .mapToObj(i -> getContinuousNaturalNumbersList(value, i))
                 .filter(o -> o != null)
                 .collect(Collectors.toSet());
