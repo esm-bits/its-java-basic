@@ -1,11 +1,11 @@
-package quesition;
+package esmbits.itsjavabasic.practices.member;
 
 public class Member {
 
     // 会員クラス(Member)、VIP会員クラス(VipMember)、会員情報を出力するクラス(OutputMemberInfo)を作る。
 
     // 会員クラスはプロパティにIDと名前、ポイントを持つ。
-    // VIP会員クラスは会員クラスを継承し、プロパティの名前を取得する際には語尾に" (VIP)"を付け加え、ポイントを取得する際にはポイントを1.5倍に割り増しにする。
+    // VIP会員クラスは会員クラスを継承し、プロパティの名前を取得する際には語尾に" (VIP)"を付け加え、ポイントを設定する際にポイントを1.5倍に割り増しにする。
     // 会員情報を出力するクラスはコンソールに下記のようにログを出力する。
         /*実行結果
          * ID:12345, Name:hoge, Point:100.0
