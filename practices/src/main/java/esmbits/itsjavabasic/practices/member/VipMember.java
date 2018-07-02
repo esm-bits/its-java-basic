@@ -11,9 +11,4 @@ public class VipMember extends Member{
         return super.getName() + " (VIP)";
     }
 
-    @Override
-    public double getPoint() {
-        return super.getPoint();
-    }
-
 }
