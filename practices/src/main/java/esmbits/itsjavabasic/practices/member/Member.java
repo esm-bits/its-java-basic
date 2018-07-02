@@ -16,9 +16,9 @@ public class Member {
 
     // 会員クラスでObject.toString()をオーバライドして、出力するログを作成し返すようにしてください。
 
-    int id;
-    String name;
-    double point;
+    private int id;
+    private String name;
+    private double point;
 
     Member(int id, String name, double point) {
         this.id = id;
@@ -26,15 +26,15 @@ public class Member {
         this.point = point;
     }
 
-    public int getId() {
+    private int getId() {
         return this.id;
     }
 
-    public String getName() {
+    protected String getName() {
         return this.name;
     }
 
-    public double getPoint() {
+    private double getPoint() {
         return this.point;
     }
 

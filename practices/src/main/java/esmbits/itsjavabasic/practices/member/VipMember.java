@@ -7,7 +7,7 @@ public class VipMember extends Member{
     }
 
     @Override
-    public String getName() {
+    protected String getName() {
         return super.getName() + " (VIP)";
     }
 
