@@ -15,4 +15,31 @@ public class Member {
          */
 
     // 会員クラスでObject.toString()をオーバライドして、出力するログを作成し返すようにしてください。
+
+    private int id;
+    private String name;
+    private double point;
+
+    Member(int id, String name, double point) {
+        this.id = id;
+        this.name = name;
+        this.point = point;
+    }
+
+    private int getId() {
+        return this.id;
+    }
+
+    protected String getName() {
+        return this.name;
+    }
+
+    private double getPoint() {
+        return this.point;
+    }
+
+    @Override
+    public String toString() {
+        return "ID:" + getId() + ", Name:" + getName() + ", Point:" + getPoint();
+    }
 }
