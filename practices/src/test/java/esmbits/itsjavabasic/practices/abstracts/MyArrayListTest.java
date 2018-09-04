@@ -1,5 +1,7 @@
 package esmbits.itsjavabasic.practices.abstracts;
 
+import static org.hamcrest.CoreMatchers.*;
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.Assert.*;
 
 import org.junit.Test;
@@ -7,9 +9,20 @@ import org.junit.Test;
 public class MyArrayListTest {
 
 	@Test
-	public void testAdd() {
-		MyList myList = new MyArrayList();
-		fail("まだ実装されていません");
+	public void test() {
+		//MyListを作成
+	    MyList myList = new MyArrayList();
+		myList.add("test1");
+		myList.add("test2");
+		myList.add("test3");
+		myList.add("test4");
+		myList.add("test5");
+
+		//要素が５個入っているか確認
+		assertThat(myList.size(), is(5));
+
+		//３つ目の要素を取得
+		assertThat(myList.get(2), is("test3"));
 	}
 
 }
