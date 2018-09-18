@@ -4,6 +4,9 @@ public class MyArrayList implements MyList {
 
 	private String[] strArray = null;
 
+    /**
+     * 要素の数.
+     */
 	private int index = 0;
 
 	public MyArrayList() {
@@ -31,6 +34,11 @@ public class MyArrayList implements MyList {
 
 	    //指定された要素番号のデータを取得
 	    String bufString = null;
+
+	    // 要素の数より大きな番号が指定された場合、例外を送出
+	    if (number > index) {
+	        throw new IndexOutOfBoundsException();
+        }
 
 	    if (this.strArray.length >= number) {
 	        bufString = this.strArray[number];
