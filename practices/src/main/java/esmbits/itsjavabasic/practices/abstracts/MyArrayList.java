@@ -10,14 +10,16 @@ public class MyArrayList implements MyList {
 	private int index = 0;
 
 	public MyArrayList() {
-	    // TODO Addしていない配列に空文字が入る？
 		this.strArray = new String[5];
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void add(String str) {
 	    // インデクスが配列要素より大きい場合は、要素を5増やして置き換え
-		if(index > strArray.length) {
+		if(index >= strArray.length) {
 			String[] cloneArray = strArray.clone();
 			strArray = new String[strArray.length + 5];
 			for(int i = 0; i < cloneArray.length; i++) {
@@ -28,15 +30,17 @@ public class MyArrayList implements MyList {
 		index++;
 	}
 
+	/**
+     * {@inheritDoc}
+     */
 	@Override
 	public String get(int number) {
-	    //TODO
 
 	    //指定された要素番号のデータを取得
 	    String bufString = null;
 
 	    // 要素の数より大きな番号が指定された場合、例外を送出
-	    if (number > index) {
+	    if (number >= index) {
 	        throw new IndexOutOfBoundsException();
         }
 
@@ -46,16 +50,21 @@ public class MyArrayList implements MyList {
 	    return bufString;
 	}
 
+	/**
+     * {@inheritDoc}
+     */
 	@Override
 	public String remove(int number) {
 		// TODO 自動生成されたメソッド・スタブ
 		return null;
 	}
 
+	/**
+     * {@inheritDoc}
+     */
 	@Override
 	public int size() {
-		// TODO 自動生成されたメソッド・スタブ
-		return 0;
+		return index;
 	}
 
 }
