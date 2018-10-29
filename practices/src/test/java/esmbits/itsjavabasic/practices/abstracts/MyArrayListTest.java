@@ -90,4 +90,77 @@ public class MyArrayListTest {
         assertThat(myList.size(), is(0));
     }
 
+    /**
+     * TODO：get()のテスト
+     */
+    @Test
+    public void test_get_リストの要素を取得できる() {
+        // TODO 自動生成されたメソッド・スタブ
+        MyList myList = new MyArrayList();
+
+        myList.add("test01");
+        myList.add("test02");
+        myList.add("test03");
+        myList.add("test04");
+
+        assertThat(myList.get(0), is("test01"));
+        assertThat(myList.get(1), is("test02"));
+        assertThat(myList.get(2), is("test03"));
+        assertThat(myList.get(3), is("test04"));
+
+    }
+
+    @Test
+    public void test_get_要素ゼロ() {
+        MyList myList = new MyArrayList();
+        try {
+            myList.get(0);
+            fail();
+        } catch (IndexOutOfBoundsException e) {
+
+        } catch (Exception e) {
+            fail();
+        }
+    }
+
+    @Test
+    public void test_get_要素がない番地を参照() {
+        // TODO 自動生成されたメソッド・スタブ
+        MyList myList = new MyArrayList();
+
+        myList.add("test01");
+        myList.add("test02");
+        myList.add("test03");
+        myList.add("test04");
+
+        try {
+            myList.get(4);
+            fail();
+        } catch (IndexOutOfBoundsException e) {
+
+        } catch (Exception e) {
+            fail();
+        }
+    }
+
+    @Test
+    public void test_get_引数がマイナス値の場合() {
+        // TODO 自動生成されたメソッド・スタブ
+        MyList myList = new MyArrayList();
+
+        myList.add("test01");
+        myList.add("test02");
+        myList.add("test03");
+        myList.add("test04");
+
+        try {
+            myList.get(-1);
+            fail();
+        } catch (IndexOutOfBoundsException e) {
+            assertThat(e.getMessage(), is("引数の値がマイナス値です。"));
+        } catch (Exception e) {
+            fail();
+        }
+    }
+
 }

@@ -41,7 +41,7 @@ public class MyArrayList implements MyList {
 
 	    // 要素の数より大きな番号が指定された場合、例外を送出
 	    if (number >= index) {
-	        throw new IndexOutOfBoundsException();
+	        throw new IndexOutOfBoundsException("引数の値が範囲を超えています。");
         }
 
 	    if (this.strArray.length >= number) {
