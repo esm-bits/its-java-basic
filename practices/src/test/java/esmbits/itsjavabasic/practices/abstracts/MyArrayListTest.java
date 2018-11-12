@@ -4,9 +4,6 @@ import static org.hamcrest.CoreMatchers.*;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.Assert.*;
 
-import org.junit.Ignore;
-
-import com.sun.tracing.dtrace.ArgsAttributes;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
@@ -145,7 +142,7 @@ public class MyArrayListTest {
 
     @Test
     public void test_get_引数がマイナス値の場合() {
-        // TODO 自動生成されたメソッド・スタブ
+
         MyList myList = new MyArrayList();
 
         myList.add("test01");
@@ -161,6 +158,23 @@ public class MyArrayListTest {
         } catch (Exception e) {
             fail();
         }
+    }
+
+    @Test
+    public void test_remove_指定したインデックスの要素を削除() {
+
+        MyList myList = new MyArrayList();
+
+        myList.add("test01");
+        myList.add("test02");
+        myList.add("test03");
+        myList.add("test04");
+
+        myList.remove(1);
+
+        assertThat(myList.get(0), is("test02"));
+        assertThat(myList.get(1), is("test03"));
+        assertThat(myList.get(2), is("test04"));
     }
 
 }

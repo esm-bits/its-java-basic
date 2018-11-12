@@ -39,6 +39,11 @@ public class MyArrayList implements MyList {
 	    //指定された要素番号のデータを取得
 	    String bufString = null;
 
+	    // マイナスが指定された場合、例外を送出
+	    if (number < 0) {
+	    	throw new IndexOutOfBoundsException("引数の値がマイナス値です。");
+	    }
+
 	    // 要素の数より大きな番号が指定された場合、例外を送出
 	    if (number >= index) {
 	        throw new IndexOutOfBoundsException("引数の値が範囲を超えています。");
@@ -56,7 +61,26 @@ public class MyArrayList implements MyList {
 	@Override
 	public String remove(int number) {
 		// TODO 自動生成されたメソッド・スタブ
-		return null;
+
+		String[] newArray = new String[5];
+
+		int index = 0;
+		String removeStr = null;
+		for (int i = 0; i < strArray.length; i++) {
+
+			if (i == number - 1) {
+				removeStr = strArray[i];
+				continue;
+			}
+
+			newArray[index] = strArray[i];
+			index++;
+
+		}
+
+		strArray = newArray;
+
+		return removeStr;
 	}
 
 	/**
