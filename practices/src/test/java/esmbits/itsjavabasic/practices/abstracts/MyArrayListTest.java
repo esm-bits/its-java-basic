@@ -170,9 +170,11 @@ public class MyArrayListTest {
         myList.add("test03");
         myList.add("test04");
 
+        assertThat(myList.size(), is(4));
         myList.remove(1);
 
-        assertThat(myList.get(0), is("test02"));
+//        assertThat(myList.size(), is(3));
+        assertThat(myList.get(0), is("test01"));
         assertThat(myList.get(1), is("test03"));
         assertThat(myList.get(2), is("test04"));
     }

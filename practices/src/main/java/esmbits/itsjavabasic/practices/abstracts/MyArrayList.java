@@ -62,13 +62,15 @@ public class MyArrayList implements MyList {
 	public String remove(int number) {
 		// TODO 自動生成されたメソッド・スタブ
 
+		// TODO 配列の要素数が5固定になっている。(6以上の場合、エラー)
+		// TODO サイズを管理している index の値を正しく設定する。
 		String[] newArray = new String[5];
 
 		int index = 0;
 		String removeStr = null;
 		for (int i = 0; i < strArray.length; i++) {
 
-			if (i == number - 1) {
+			if (i == number) {
 				removeStr = strArray[i];
 				continue;
 			}
