@@ -163,20 +163,31 @@ public class MyArrayListTest {
     @Test
     public void test_remove_指定したインデックスの要素を削除() {
 
+    	// TODO 引数の境界値確認（要素数が5個以下の場合、または6個以上の場合）
+    	// TODO 引数の境界値確認（numberがマイナス値、または要素数より大きい値の場合）
+    	// TODO リストのサイズが0のときに削除した場合、例外が発生すること
         MyList myList = new MyArrayList();
 
         myList.add("test01");
         myList.add("test02");
         myList.add("test03");
         myList.add("test04");
+        myList.add("test05");
+        myList.add("test06");
+        myList.add("test07");
 
-        assertThat(myList.size(), is(4));
-        myList.remove(1);
+        assertThat(myList.size(), is(7));
+        
+        String removed = myList.remove(1);
+        assertThat(removed, is("test02"));
 
-//        assertThat(myList.size(), is(3));
+        assertThat(myList.size(), is(6));
         assertThat(myList.get(0), is("test01"));
         assertThat(myList.get(1), is("test03"));
         assertThat(myList.get(2), is("test04"));
+        assertThat(myList.get(3), is("test05"));
+        assertThat(myList.get(4), is("test06"));
+        assertThat(myList.get(5), is("test07"));
     }
 
 }
